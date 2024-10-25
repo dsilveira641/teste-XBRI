@@ -1,0 +1,35 @@
+<div>
+    <nz-table #basicTable [nzData]="dataSource" [nzFrontPagination]="false" [nzSortDirections]="['ascend', 'descend']">
+      <!-- Colunas Dinâmicas -->
+      <thead>
+        <tr>
+          <th *ngFor="let column of displayedColumns" [nzColumnKey]="column.name" nzShowSort nzSort="{{ column.sortColumn || column.name }}">
+            {{ column.title }}
+            <ng-container *ngIf="column.titleIconAttrs">
+              <i nz-icon [nzType]="column.titleIconAttrs?.icon"></i>
+            </ng-container>
+          </th>
+          <th nzColumnKey="actions">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of basicTable.data">
+          <td *ngFor="let column of displayedColumns">
+            {{ element[column.name] }}
+          </td>
+          <td>
+            <ng-container *ngFor="let action of actions">
+              <button nz-button [ngClass]="action.class" (click)="onActionClick(action, element)">
+                <i nz-icon [nzType]="action.icon" [ngClass]="action.class"></i>
+              </button>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  
+    <!-- Paginação -->
+    <nz-pagination [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" [nzTotal]="total" [nzPageSizeOptions]="[5, 10, 20]" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" (nzPageIndexChange)="onPageIndexChange($event)" (nzPageSizeChange)="onPageSizeChange($event)">
+    </nz-pagination>
+  </div>
+  
