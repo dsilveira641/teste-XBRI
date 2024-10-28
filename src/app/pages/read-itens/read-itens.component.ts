@@ -42,7 +42,7 @@ export class ReadItensComponent implements OnInit, OnDestroy {
       title: "Categoria"
     },
     {
-      name: "ativo",
+      name: "activeValue",
       title: "Ativo"
     },
     {
@@ -77,7 +77,7 @@ export class ReadItensComponent implements OnInit, OnDestroy {
       this.delete(event.element.id);
     }  
     else if (event.name === ActionClickName.EDIT) {
-      this.openDialog()
+      this.openDialog(event);
     }
   }
 
@@ -85,14 +85,18 @@ export class ReadItensComponent implements OnInit, OnDestroy {
     this.data = this.storageSavedData.map((item: any) => {
       return {
         ...item,
-        ativo: (item.ativo) ? "Ativo" : "Inativo"
+        activeValue: (item.ativo) ? "Ativo" : "Inativo",        
       }
     });        
   }
 
-  private openDialog() {
+  openDialog(entity: any = null) {
+    console.log("[openDialog]", entity);        
     this.dialogService.openGenericDialog(EditItemComponent, {
-      
+      data: {
+        name: entity.name,
+        element: entity.element
+      }
     });
   }
 

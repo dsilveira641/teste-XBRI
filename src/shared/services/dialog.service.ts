@@ -26,6 +26,7 @@ export class DialogService {
       panelClass: 'position-relative',
     }
 
+    Object.assign(baseOptions, cfg);
     return this.dialog?.open(cmp, {
       ...baseOptions
     });

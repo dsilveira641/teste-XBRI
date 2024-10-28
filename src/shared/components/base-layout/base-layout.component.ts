@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class BaseLayoutComponent implements OnInit {
 
   @Input() headerTitle!: string;
+  @Input() buttonTitle!: string;
   @Output() buttonClick = new EventEmitter<void>();
   
   constructor() { }

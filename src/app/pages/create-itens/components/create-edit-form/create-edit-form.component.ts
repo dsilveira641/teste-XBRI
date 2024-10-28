@@ -34,8 +34,10 @@ export class CreateEditFormComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log("[ngOnChanges]", this.data);
+    
     if (this.data) {
-      this.form.patchValue(this.data);
+      this.form.patchValue(this.data.element);
     }
   }
 

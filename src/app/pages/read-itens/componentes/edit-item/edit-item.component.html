@@ -1,5 +1,9 @@
 <app-base-layout 
-    [headerTitle]="'Editar item'">    
-    <app-create-edit-form>
+    [headerTitle]="'Editar item'"
+    [buttonTitle]="'Salvar'"
+    (buttonClick)="onSave($event)">    
+    <app-create-edit-form
+        #addEditForm
+        [data]="entity">
     </app-create-edit-form>
 </app-base-layout>

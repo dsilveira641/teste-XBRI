@@ -1,6 +1,12 @@
-<app-dynamic-table
-    [data]="data"
-    [actions]="actions"
-    [displayedColumns]="columns"
-    (actionClick)="onActionClick($event)">
-</app-dynamic-table>
+<app-base-layout
+    [headerTitle]="'Criar item'"
+    [buttonTitle]="'cadastrar'"
+    (buttonClick)="openDialog()">
+
+    <app-dynamic-table
+        [data]="data"
+        [actions]="actions"
+        [displayedColumns]="columns"
+        (actionClick)="onActionClick($event)">
+    </app-dynamic-table>
+</app-base-layout>

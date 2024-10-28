@@ -30,6 +30,9 @@ import { CreateEditFormComponent } from './components/create-edit-form/create-ed
     MatRadioModule,
     MatButtonModule,
     MatDividerModule
+  ],
+  exports: [
+    CreateEditFormComponent
   ]
 })
 export class CreateItensModule { }

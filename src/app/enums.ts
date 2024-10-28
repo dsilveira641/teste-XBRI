@@ -12,5 +12,6 @@ export enum ConfirmationMessages {
 
 export enum ActionClickName {
     EXCLUDE = "delete",
-    EDIT = "edit"
+    EDIT = "edit",
+    CREATE = "create"
 }

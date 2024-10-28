@@ -18,10 +18,6 @@ export class CreateItensComponent implements OnInit, OnDestroy {
 
   @ViewChild('addEditForm') addEditForm!: CreateEditFormComponent;
   
-  form!: FormGroup;
-  categories!: Options[];
-  categories$!: Observable<Options[]>;
-
   private destroy$ = new Subject();
 
   constructor(
