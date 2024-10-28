@@ -1,0 +1,22 @@
+<mat-dialog-content class="mt-2">
+    <p class="my-3 text-center" [innerHTML]="dialogData.message"></p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center" class="mb-1">
+    <button
+      mat-flat-button
+      class="me-2 button-primary"
+      (click)="onButtonClick(true)"
+    >
+      <mat-icon>{{ dialogData.yesButtonIcon || "check_circle" }}</mat-icon>
+      {{ dialogData.yesButtonText || "Sim" }}
+    </button>
+    <button
+      cdkFocusInitial
+      mat-flat-button
+      class="button-secondary"
+      (click)="onButtonClick(false)"
+    >
+      <mat-icon> {{ dialogData.noButtonIcon || "cancel" }} </mat-icon>
+      {{ dialogData.noButtonText || "Não" }}
+    </button>
+  </mat-dialog-actions>

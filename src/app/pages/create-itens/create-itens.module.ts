@@ -11,10 +11,12 @@ import { MatRadioModule }  from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { CreateItensRoutingModule } from './create-itens-routing.module';
+import { CreateEditFormComponent } from './components/create-edit-form/create-edit-form.component';
 
 @NgModule({
   declarations: [
-    CreateItensComponent
+    CreateItensComponent,
+    CreateEditFormComponent
   ],
   imports: [
     CommonModule,

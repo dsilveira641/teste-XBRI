@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ReadItensComponent } from './pages/read-itens/read-itens.component';
-import { CreateItensComponent } from './pages/create-itens/create-itens.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/welcome' },

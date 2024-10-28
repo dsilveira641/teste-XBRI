@@ -9,6 +9,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CURRENCY_MASK_CONFIG, CurrencyMaskConfig, CurrencyMaskModule } from 'ng2-currency-mask';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BaseLayoutComponent } from './components/base-layout/base-layout.component';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   align: "right",
@@ -22,7 +25,9 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
 
 @NgModule({
   declarations: [
-    DynamicTableComponent
+    DynamicTableComponent,
+    ConfirmationDialogComponent,
+    BaseLayoutComponent
   ],
   imports: [
     CommonModule,
@@ -34,10 +39,12 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     ReactiveFormsModule,
     DynamicTableModule,
     CurrencyMaskModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   exports: [
     DynamicTableComponent,
+    BaseLayoutComponent,
     CommonModule,
     MatTableModule,
     MatPaginatorModule,

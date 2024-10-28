@@ -1,0 +1,39 @@
+<form *ngIf="form" nz-form [formGroup]="form" class="w-100">
+    <div>
+        Ativo: 
+    </div>
+    <mat-radio-group formControlName="ativo" aria-label="Select an option">
+        <mat-radio-button class="me-2" value="true">Sim</mat-radio-button>
+        <mat-radio-button value="false">Não</mat-radio-button>
+    </mat-radio-group>    
+    <div class="row mt-3">
+        <div class="col-sm-4">
+            <mat-form-field floatLabel="always" class="w-100" appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nomeItem" placeholder="Digite o nome">
+            </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+            <mat-form-field class="w-100" floatLabel="always" appearance="outline">
+                <mat-label>Categoria</mat-label>
+                <mat-select formControlName="categoria">
+                  <mat-option *ngFor="let option of categories$ | async" [value]="option.value">
+                    {{ option.viewValue }}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+            <mat-form-field floatLabel="always" class="w-100" appearance="outline">
+                <mat-label>Quantidade</mat-label>
+                <input formControlName="quantidade" matInput type="number"/>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+            <mat-form-field floatLabel="always" class="w-100" appearance="outline">
+                <mat-label>Preço</mat-label>
+                <input matInput currencyMask formControlName="preco" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
+            </mat-form-field>
+        </div>        
+    </div>
+</form>    
