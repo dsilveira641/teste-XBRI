@@ -1,35 +1,34 @@
-<div>
-    <nz-table #basicTable [nzData]="dataSource" [nzFrontPagination]="false" [nzSortDirections]="['ascend', 'descend']">
-      <!-- Colunas Dinâmicas -->
-      <thead>
-        <tr>
-          <th *ngFor="let column of displayedColumns" [nzColumnKey]="column.name" nzShowSort nzSort="{{ column.sortColumn || column.name }}">
-            {{ column.title }}
-            <ng-container *ngIf="column.titleIconAttrs">
-              <i nz-icon [nzType]="column.titleIconAttrs?.icon"></i>
-            </ng-container>
-          </th>
-          <th nzColumnKey="actions">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let element of basicTable.data">
-          <td *ngFor="let column of displayedColumns">
-            {{ element[column.name] }}
-          </td>
-          <td>
-            <ng-container *ngFor="let action of actions">
-              <button nz-button [ngClass]="action.class" (click)="onActionClick(action, element)">
-                <i nz-icon [nzType]="action.icon" [ngClass]="action.class"></i>
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Colunas Dinâmicas -->
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column.name">
+      <mat-header-cell class="header-style" *matHeaderCellDef mat-sort-header="{{ column.sortColumn || column.name }}">
+        {{ column.title }}
+        <ng-container *ngIf="column.titleIconAttrs">
+          <!-- <mat-icon [attr.icon]="column.titleIconAttrs?.icon">{{ column.titleIconAttrs?.name }}</mat-icon> -->
+        </ng-container>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element[column.name] }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell class="header-style" *matHeaderCellDef>Ações</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <ng-container *ngFor="let action of actions">
+              <button (click)="onActionClick(action, element)" mat-icon-button class="button-icon {{ action.class }}">
+                  <mat-icon class="mat-icon {{ action.class }}">{{ action.icon }}</mat-icon>
               </button>
-            </ng-container>
-          </td>
-        </tr>
-      </tbody>
-    </nz-table>
-  
-    <!-- Paginação -->
-    <nz-pagination [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" [nzTotal]="total" [nzPageSizeOptions]="[5, 10, 20]" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" (nzPageIndexChange)="onPageIndexChange($event)" (nzPageSizeChange)="onPageSizeChange($event)">
-    </nz-pagination>
-  </div>
-  
+          </ng-container>
+      </mat-cell>
+    </ng-container>
+    
+    <!-- Cabeçalho e Linhas -->
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns"></mat-row>
+    
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

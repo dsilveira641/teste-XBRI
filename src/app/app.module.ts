@@ -13,16 +13,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { ReadItensComponent } from './pages/read-itens/read-itens.component';
-import { CreateItensComponent } from './pages/create-itens/create-itens.component';
+import { CreateItensModule } from './pages/create-itens/create-itens.module';
+import { ReadItensModule } from './pages/read-itens/read-itens.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { CURRENCY_MASK_CONFIG, CurrencyMaskConfig, CurrencyMaskModule } from 'ng2-currency-mask';
 
 registerLocaleData(pt);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ReadItensComponent,
-    CreateItensComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +32,14 @@ registerLocaleData(pt);
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
+    CreateItensModule,
+    ReadItensModule,
+    CurrencyMaskModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: pt_BR }],
+  providers: [
+    { provide: NZ_I18N, useValue: pt_BR },    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
