@@ -6,10 +6,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
-import { DynamicSelectComponent } from './components/dynamic-select/dynamic-select.component';
-import { DynamicSelectModule } from './components/dynamic-select/dynamic-select.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CURRENCY_MASK_CONFIG, CurrencyMaskConfig, CurrencyMaskModule } from 'ng2-currency-mask';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   align: "right",
@@ -24,7 +24,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
 @NgModule({
   declarations: [
     DynamicTableComponent,
-    DynamicSelectComponent
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
@@ -35,12 +35,11 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     MatIconModule,
     ReactiveFormsModule,
     DynamicTableModule,
-    DynamicSelectModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    MatSnackBarModule
   ],
   exports: [
     DynamicTableComponent,
-    DynamicSelectComponent,
     CommonModule,
     MatTableModule,
     MatPaginatorModule,

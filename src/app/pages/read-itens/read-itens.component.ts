@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { LocalStorage } from 'src/app/enums';
+import { ActionClickName, AffirmationMessages, LocalStorage } from 'src/app/enums';
 import { Actions, Column } from 'src/shared/components/dynamic-table/interfaces/table-interface';
+import { CommonService } from 'src/shared/services/common.service';
+import { DialogService } from 'src/shared/services/dialog.service';
 import { StorageService } from 'src/shared/services/storage.service';
 
 @Component({
@@ -54,7 +56,9 @@ export class ReadItensComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject();
   
   constructor(
-    private storage: StorageService
+    private storage: StorageService,
+    private dialogService: DialogService,
+    private common: CommonService
   ) { }
   
   ngOnInit(): void {
@@ -66,9 +70,29 @@ export class ReadItensComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
 
+  onActionClick(event: any) {
+    console.log("[onActionClick]", event);  
+    if (event.name === ActionClickName.EXCLUDE) {
+      this.delete(event.element.id);
+    }  
+  }
+
   private getList() {
-    this.data = this.storageSavedData;
-    console.log("[getList]", this.data);
+    this.data = this.storageSavedData.map((item: any) => {
+      return {
+        ...item,
+        ativo: (item.ativo) ? "Ativo" : "Inativo"
+      }
+    });
+    console.log("[getList]", this.storageSavedData.at(-1));
+    
+  }
+
+  delete(index: number) {
+    const savedItens = this.storageSavedData.filter((item: any) => item.id !== index);
+    this.storage.setItem(LocalStorage.ItensSaved, savedItens);
+    this.getList();
+    this.common.showSnack(AffirmationMessages.SAVE_SUCCESS);    
     
   }
 

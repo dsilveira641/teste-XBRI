@@ -5,6 +5,7 @@ import {
   MatDialogConfig,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,12 @@ export class DialogService {
 
     return this.dialog?.open(cmp, {
       ...baseOptions
+    });
+  }
+
+  confirmation() {
+    this.dialog.open(ConfirmationDialogComponent, {
+      width: '80vw'
     });
   }
 }

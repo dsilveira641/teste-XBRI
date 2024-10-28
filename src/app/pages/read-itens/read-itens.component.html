@@ -1,5 +1,6 @@
 <app-dynamic-table
     [data]="data"
     [actions]="actions"
-    [displayedColumns]="columns">
+    [displayedColumns]="columns"
+    (actionClick)="onActionClick($event)">
 </app-dynamic-table>

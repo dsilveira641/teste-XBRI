@@ -3,9 +3,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomainsService } from 'src/shared/services/domains.service';
 import { StorageService } from 'src/shared/services/storage.service';
-import { Options } from 'src/shared/components/dynamic-select/interfaces/select-interface';
 import { AffirmationMessages, LocalStorage } from 'src/app/enums';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Options } from 'src/shared/interfaces/options';
 
 @Component({
   selector: 'app-create-itens',
@@ -44,6 +44,7 @@ export class CreateItensComponent implements OnInit, OnDestroy {
 
   private buildForm() {
     this.form = this.fb.group({
+      id: [null],
       nomeItem: [null, [Validators.required, Validators.maxLength(70)]],
       categoria: [null, Validators.required],
       quantidade: [null],
@@ -78,7 +79,9 @@ export class CreateItensComponent implements OnInit, OnDestroy {
     }
     else {
       const savedItens = this.storageSavedData;
-      savedItens.push(this.form.getRawValue());
+      const payload = this.form.getRawValue();      
+      payload.id = savedItens.at(-1).id + 1;
+      savedItens.push(payload);
       this.storage.setItem(LocalStorage.ItensSaved, savedItens);
       this.snackBar.open(AffirmationMessages.SAVE_SUCCESS, '', {
         duration: 3000
