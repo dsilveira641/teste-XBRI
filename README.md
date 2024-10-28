@@ -17,19 +17,19 @@ actionClick (EventEmitter<ActionClickEvent>): Evento emitido quando uma ação �
 ## Como usar
 ### Adicionar o Componente: No arquivo HTML, adicione o app-dynamic-table e passe as propriedades necessárias.
 
-<app-dynamic-table 
-  [displayedColumns]="displayedColumns"
-  [data]="tableData"
-  [actions]="tableActions"
-  (actionClick)="handleActionClick($event)">
-</app-dynamic-table>
+    <app-dynamic-table 
+    [displayedColumns]="displayedColumns"
+    [data]="tableData"
+    [actions]="tableActions"
+    (actionClick)="handleActionClick($event)">
+    </app-dynamic-table>
 
 ### Configurar displayedColumns: Cada coluna deve ter um name (chave para acessar o dado no objeto) e um title (nome exibido no cabeçalho).
 
-displayedColumns: Column[] = [
-  { name: 'nome', title: 'Nome' },
-  { name: 'idade', title: 'Idade' },
-];
+    displayedColumns: Column[] = [
+    { name: 'nome', title: 'Nome' },
+    { name: 'idade', title: 'Idade' },
+    ];
 
 # Storage Service
 ## getItem(key: string): Esse método busca um item específico no localStorage usando a chave fornecida (key).
