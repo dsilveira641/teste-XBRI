@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReadItensComponent } from './read-itens.component';
 import { SharedModule } from 'src/shared/shared.module';
+import { ReadItensRoutingModule } from './read-itens-routing.module';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { SharedModule } from 'src/shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    ReadItensRoutingModule
   ]
 })
 export class ReadItensModule { }

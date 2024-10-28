@@ -22,16 +22,14 @@ export class DynamicTableComponent implements OnInit, OnChanges, OnDestroy {
   rightActions: Actions[] = [];
   public actionColumnName = 'actions';
   private destroy$ = new Subject();
-
-  // Paginação
+  
   pageIndex = 1;
   pageSize = 10;
   total = 0;
 
   constructor() {}
 
-  ngOnChanges(changes: SimpleChanges): void {  
-    console.log("[ngOnChanges]", changes);
+  ngOnChanges(changes: SimpleChanges): void {      
     if (changes) {
       this.createTable();
     }
@@ -44,21 +42,7 @@ export class DynamicTableComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     this.createTable();
-  }
-
-  onSortChange(sortKey: string, sortOrder: string): void {
-    console.log("Ordenação alterada:", sortKey, sortOrder);
-  }
-
-  onPageIndexChange(newPageIndex: number): void {
-    this.pageIndex = newPageIndex;
-    this.createTable();
-  }
-
-  onPageSizeChange(newPageSize: number): void {
-    this.pageSize = newPageSize;
-    this.createTable();
-  }
+  } 
 
   onActionClick(action: Actions, element: any) {
     this.actionClick.emit({

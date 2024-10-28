@@ -32,9 +32,7 @@ export class CreateItensComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.formRules();
-    this.getCategoriesValues();
-    console.log("[ngOnInit]", this.storageSavedData);
-    
+    this.getCategoriesValues();        
   }
 
   ngOnDestroy(): void {
@@ -54,10 +52,8 @@ export class CreateItensComponent implements OnInit, OnDestroy {
   }
 
   private formRules() {
-    const checkIsFieldRequired = ['quantidade', 'preco'];
     this.form.get('ativo')?.valueChanges.pipe(takeUntil(this.destroy$)).subscribe({
-      next: (value) => {        
-        console.log("[formRules]", value);
+      next: (value) => {                
         if (value) {
           this.form.get('quantidade')?.setValidators([Validators.required]);
           this.form.get('preco')?.setValidators([Validators.required]);    

@@ -8,7 +8,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CURRENCY_MASK_CONFIG, CurrencyMaskConfig, CurrencyMaskModule } from 'ng2-currency-mask';
-import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
@@ -23,8 +22,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
 
 @NgModule({
   declarations: [
-    DynamicTableComponent,
-    ConfirmationDialogComponent
+    DynamicTableComponent
   ],
   imports: [
     CommonModule,

@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { ActionClickName, AffirmationMessages, LocalStorage } from 'src/app/enums';
 import { Actions, Column } from 'src/shared/components/dynamic-table/interfaces/table-interface';
 import { CommonService } from 'src/shared/services/common.service';
-import { DialogService } from 'src/shared/services/dialog.service';
 import { StorageService } from 'src/shared/services/storage.service';
 
 @Component({
@@ -16,12 +15,6 @@ export class ReadItensComponent implements OnInit, OnDestroy {
   data: any[] = [];
 
   actions: Actions[] = [
-    {
-      name: "edit",
-      tooltip: "Editar",
-      icon: "edit",
-      class: "edit"
-    },
     {
       name: "delete",
       tooltip: "Excluir",
@@ -57,7 +50,6 @@ export class ReadItensComponent implements OnInit, OnDestroy {
   
   constructor(
     private storage: StorageService,
-    private dialogService: DialogService,
     private common: CommonService
   ) { }
   
@@ -70,8 +62,7 @@ export class ReadItensComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
 
-  onActionClick(event: any) {
-    console.log("[onActionClick]", event);  
+  onActionClick(event: any) {      
     if (event.name === ActionClickName.EXCLUDE) {
       this.delete(event.element.id);
     }  
@@ -83,17 +74,14 @@ export class ReadItensComponent implements OnInit, OnDestroy {
         ...item,
         ativo: (item.ativo) ? "Ativo" : "Inativo"
       }
-    });
-    console.log("[getList]", this.storageSavedData.at(-1));
-    
+    });        
   }
 
-  delete(index: number) {
+  delete(index: number) {    
     const savedItens = this.storageSavedData.filter((item: any) => item.id !== index);
     this.storage.setItem(LocalStorage.ItensSaved, savedItens);
     this.getList();
-    this.common.showSnack(AffirmationMessages.SAVE_SUCCESS);    
-    
+    this.common.showSnack(AffirmationMessages.SAVE_SUCCESS);        
   }
 
   get storageSavedData(): any {

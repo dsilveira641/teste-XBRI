@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule }  from '@angular/material/radio'; 
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { CreateItensRoutingModule } from './create-itens-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MatDividerModule } from '@angular/material/divider';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    CreateItensRoutingModule,
     MatIconModule,
     MatFormFieldModule,   
     MatInputModule,

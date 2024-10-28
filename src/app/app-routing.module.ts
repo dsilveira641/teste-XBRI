@@ -8,13 +8,11 @@ const routes: Routes = [
   { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
   { 
     path: 'read', 
-    loadChildren: () => import('src/app/pages/read-itens/read-itens.module').then(m => m.ReadItensModule),
-    component: ReadItensComponent
+    loadChildren: () => import('src/app/pages/read-itens/read-itens.module').then(m => m.ReadItensModule),    
   },
   { 
     path: 'create', 
-    loadChildren: () => import('src/app/pages/create-itens/create-itens.module').then(m => m.CreateItensModule),
-    component: CreateItensComponent
+    loadChildren: () => import('src/app/pages/create-itens/create-itens.module').then(m => m.CreateItensModule),    
   }
 ];
 

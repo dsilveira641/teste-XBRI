@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ReadItensComponent } from './read-itens.component';
+import { CreateItensComponent } from './create-itens.component';
 
 const routes: Routes = [
-  { path: '', component: ReadItensComponent }
+  { path: '', component: CreateItensComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ReadItensRoutingModule { }
+export class CreateItensRoutingModule { }
