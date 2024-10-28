@@ -28,3 +28,16 @@ displayedColumns: Column[] = [
   { name: 'nome', title: 'Nome' },
   { name: 'idade', title: 'Idade' },
 ];
+
+# Storage Service
+## getItem(key: string): Esse método busca um item específico no localStorage usando a chave fornecida (key).
+
+    Se o item for encontrado, ele é convertido de JSON para um objeto JavaScript com JSON.parse(data) e retornado.
+    Se o item não for encontrado, ele retorna um array vazio [] como valor padrão.
+
+## setItem(key: string, data: any): Esse método permite armazenar dados no localStorage.
+
+    Ele recebe uma chave (key) e os dados (data) que você quer salvar.
+    Os dados são convertidos para uma string JSON usando JSON.stringify(data) antes de serem armazenados.
+
+## clearAll(): Esse método apaga todos os dados tanto do localStorage quanto do sessionStorage, limpando assim o armazenamento local e de sessão da aplicação.
