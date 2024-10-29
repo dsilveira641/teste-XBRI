@@ -97,6 +97,9 @@ export class ReadItensComponent implements OnInit, OnDestroy {
         name: entity.name,
         element: entity.element
       }
+    })
+    .afterClosed().pipe(takeUntil(this.destroy$)).subscribe((response: boolean) => {
+      this.getList();
     });
   }
 
